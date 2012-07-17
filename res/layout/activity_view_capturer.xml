@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:orientation="vertical">
+
+    <LinearLayout 
+        android:id="@+id/source"
+    	android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="0.5"
+		android:orientation="vertical"
+    	>
+        
+        <Button android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:text="Zoom"
+            android:id="@+id/moving_button"
+            />
+        
+        
+        
+        <Button android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:text="Capture using Canvas"
+            android:id="@+id/capture_canvas"/>
+        
+        <Button android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:text="Capture using DrawingCache"
+            android:id="@+id/capture_dc"/>
+        
+        
+        
+    </LinearLayout>	
+	
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="0.5"
+        android:id="@+id/canvas"
+        android:background="#dfdfdf"/>
+</LinearLayout>
