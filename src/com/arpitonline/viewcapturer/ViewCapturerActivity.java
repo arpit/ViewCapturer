@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
@@ -68,12 +67,15 @@ public class ViewCapturerActivity extends Activity {
     }
     private void captureUsingDrawingCache(){
     	
-    	Log.d(TAG, "Drawing Cache: "+targetView.isDrawingCacheEnabled());
-    	
-    	targetView.setDrawingCacheEnabled(true);
-    	Bitmap b = targetView.getDrawingCache();
+    	targetView.buildDrawingCache();
+    	Bitmap b1 = targetView.getDrawingCache();
+    	// copy this bitmap otherwise distroying the cache will destroy 
+    	// the bitmap for the referencing drawable and you'll not
+    	// get the captured view
+    	Bitmap b = b1.copy(Bitmap.Config.ARGB_8888, false);
     	BitmapDrawable d = new BitmapDrawable(b);
     	canvasView.setBackgroundDrawable(d);
+    	targetView.destroyDrawingCache();
     }
 
     
